@@ -127,13 +127,13 @@
 
 
 
-# stories/services.py
-
+# simport requests
 import requests
+from django.conf import settings
 
 class NewsService:
     BASE_URL = "https://newsdata.io/api/1/news"
-    API_KEY = "pub_553ede84a44b4b2a8ca925fa37eb3baa"  # replace with your real key if needed
+    API_KEY = settings.NEWS_API_KEY  # ✅ loaded securely from settings
 
     def fetch_india_news(self, category=None):
         """Fetch latest India news"""

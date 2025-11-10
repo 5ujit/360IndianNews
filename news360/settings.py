@@ -2,6 +2,7 @@
 """
 Django settings for news360 project.
 """
+from decouple import config
 
 from pathlib import Path
 
@@ -13,6 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-i6cftr@q$3+y_&$y9lr!)e$q08b+s&ggie0m_sd%*sj%wqa_i='
+NEWS_API_KEY = config('NEWS_API_KEY', default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -189,17 +191,3 @@ MESSAGE_TAGS = {
 
 
 
-# At the end of settings.py
-
-# NewsAPI Configuration - GET YOUR KEY FROM https://newsapi.org/register
-NEWSAPI_KEY = 'Y8b1a4083b6d74cdbbe1d653979377b48'  # REPLACE THIS WITH YOUR ACTUAL API KEY
-NEWSAPI_BASE_URL = 'https://newsapi.org/v2/'
-
-# Cache settings for news
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'unique-snowflake',
-        'TIMEOUT': 1800,  # 30 minutes cache
-    }
-}
